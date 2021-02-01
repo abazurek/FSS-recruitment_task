@@ -2,6 +2,7 @@
 .map{
   font-family: $font-base;
   font-size: 20px;
+
   .leaflet-marker-icon{
     background: transparent;
     border: none;
@@ -13,13 +14,19 @@
       font-family: $font-base;
       font-size: 16px;
       font-weight: 500;
-      i{
-        font-size: 22px;
+      img{
+       width: 30px;
+        height: auto;
       }
-      p{
 
-      }
     }
   }
+}
+.loading-paragraph{
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  background: white;
+  height: 50px;
 }
 
