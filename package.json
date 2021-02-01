@@ -2,10 +2,12 @@
   "name": "fss-recruitment_task",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://abazurek.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
+    "gh-pages": "^3.1.0",
     "leaflet": "^1.7.1",
     "node-sass": "^4.14.1",
     "prettier": "^2.2.1",
@@ -17,6 +19,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
