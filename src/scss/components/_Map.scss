@@ -1,12 +1,11 @@
-
-.map{
+.map {
   font-family: $font-base;
   font-size: 20px;
 
-  .leaflet-marker-icon{
+  .leaflet-marker-icon {
     background: transparent;
     border: none;
-    div{
+    div {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -14,19 +13,17 @@
       font-family: $font-base;
       font-size: 16px;
       font-weight: 500;
-      img{
-       width: 30px;
+      img {
+        width: 30px;
         height: auto;
       }
-
     }
   }
 }
-.loading-paragraph{
+.loading-paragraph {
   font-size: 20px;
   text-align: center;
   color: black;
   background: white;
   height: 50px;
 }
-
