@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import MapComponent from "./components/MapComponent";
-import {icon} from "leaflet/dist/leaflet-src.esm";
 
 const weatherAPI = "https://danepubliczne.imgw.pl/api/data/synop/";
 
@@ -44,10 +43,9 @@ function App() {
       getAllApiInfo();
   },[])
 
-console.log(data)
 
   return (
-    <MapComponent />
+    <MapComponent info={data}/>
   );
 }
 

@@ -1,5 +1,25 @@
 
 .map{
-  height: 180px;
-  width: 300px;
+  font-family: $font-base;
+  font-size: 20px;
+  .leaflet-marker-icon{
+    background: transparent;
+    border: none;
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: $font-base;
+      font-size: 16px;
+      font-weight: 500;
+      i{
+        font-size: 22px;
+      }
+      p{
+
+      }
+    }
+  }
 }
+
