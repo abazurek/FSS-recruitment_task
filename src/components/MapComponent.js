@@ -14,6 +14,7 @@ const position = [52.12, 19.21];
 // })
 
 export default function MapComponent(){
+
     return(
         <MapContainer center={position} zoom={7} scrollWheelZoom={false} className="map" style={{width:1000, height:950}}>
             <TileLayer
