@@ -1,44 +1,57 @@
 import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSun,
+  faCloudSun,
+  faCloudSunRain,
+  faSnowflake,
+  faIcicles,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import Leaflet from "leaflet";
+import { divIcon } from "leaflet";
+
 const position = [52.12, 19.21];
 
-function getIconImage(temperature) {
-  const temp = parseFloat(temperature);
-
-  let srcPath =
-    "https://www.flaticon.com/svg/vstatic/svg/4150/4150977.svg?token=exp=1612215648~hmac=530e9291a4ebd6a4755d43c040c32382";
-
-  if (20.1 < temp) {
-    srcPath =
-      "https://www.flaticon.com/svg/vstatic/svg/1684/1684375.svg?token=exp=1612215367~hmac=d1650a5f43a03ce10b0e2be85259d5be";
-  } else if (5.1 < temp && temp <= 20) {
-    srcPath =
-      "https://www.flaticon.com/svg/vstatic/svg/2892/2892892.svg?token=exp=1612215587~hmac=69fe72026a8238949be29b7d6d4e254f";
-  } else if (-5 < temp && temp <= 5) {
-    srcPath =
-      "https://www.flaticon.com/svg/vstatic/svg/4151/4151003.svg?token=exp=1612215367~hmac=5ad5a774f4a95d08778e82775ffa553b";
-  } else if (-15 < temp && temp <= -5.1) {
-    srcPath =
-      "https://www.flaticon.com/svg/vstatic/svg/1684/1684374.svg?token=exp=1612215501~hmac=f833cecf8eb80267def922aeea1b138a";
-  } else if (temp <= -15.1) {
-    srcPath =
-      "https://www.flaticon.com/svg/vstatic/svg/899/899708.svg?token=exp=1612215367~hmac=bf2296ec3b7fb0c8c2f4fb0cb338d497";
-  }
-  return srcPath;
-}
-
 function getIcon(temp) {
-  const myIcon = Leaflet.divIcon({
-    iconUrl:
-      "https://cdn1.iconfinder.com/data/icons/weather-306/100/Icon_13-2-61_1-256.png",
-    className: "divIcon",
-    html: `<div><img src=${getIconImage(
-      temp
-    )} alt="temperature icon"/><p>${temp}</p> </div>`,
+  const temperature = parseFloat(temp);
+
+  let currentIcon = faSun;
+  let color = { color: "#fcba03" };
+
+  if (20.1 < temperature) {
+    currentIcon = faSun;
+    color.color = "#e64922";
+  } else if (5.1 < temperature && temperature <= 20) {
+    currentIcon = faCloudSun;
+    color.color = "#fcc603";
+  } else if (-5 < temperature && temperature <= 5) {
+    currentIcon = faCloudSunRain;
+    color.color = "#46cae8";
+  } else if (-15 < temperature && temperature <= -5.1) {
+    currentIcon = faSnowflake;
+    color.color = "#2c8fa3";
+  } else if (temperature <= -15.1) {
+    currentIcon = faIcicles;
+    color.color = "#0781b5";
+  }
+
+  const iconMarkup = renderToStaticMarkup(
+    <div className="divIcon">
+      <FontAwesomeIcon
+        title=""
+        className="weatherIcon"
+        icon={currentIcon}
+        style={color}
+      />
+      <p>{temp}</p>{" "}
+    </div>
+  );
+  const myIcon = divIcon({
+    html: iconMarkup,
     iconSize: [25, 25],
-    iconAnchor: [0, 0],
+    iconAnchor: [10, -15],
     popupAnchor: [0, -5],
   });
 
