@@ -5,16 +5,14 @@
   .leaflet-marker-icon {
     background: transparent;
     border: none;
-    div {
+    .divIcon {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
       font-family: $font-base;
       font-size: 16px;
       font-weight: 500;
-      img {
-        width: 30px;
+      svg {
+        width: 25px;
         height: auto;
       }
     }
