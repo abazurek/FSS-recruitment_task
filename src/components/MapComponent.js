@@ -1,5 +1,16 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+
+import LoadingComponent from "./LoadingComponent";
+import { divIcon } from "leaflet";
+import {
+  MapContainer,
+  LayersControl,
+  Marker,
+  Popup,
+  TileLayer,
+  LayerGroup,
+} from "react-leaflet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSun,
@@ -8,9 +19,6 @@ import {
   faSnowflake,
   faIcicles,
 } from "@fortawesome/free-solid-svg-icons";
-
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { divIcon } from "leaflet";
 
 const position = [52.12, 19.21];
 
@@ -58,40 +66,41 @@ function getIcon(temp) {
   return myIcon;
 }
 
-export default function MapComponent({ info }) {
+export default function MapComponent({ country, info }) {
   return (
-    <>
-      {!info ? <p className="loading-paragraph">Loading temperature...</p> : ""}
+    <div className="mapWrapper">
+      {!info && <LoadingComponent />}
       <MapContainer
         center={position}
         zoom={7}
         scrollWheelZoom={false}
         className="map"
-        style={{ width: 1000, height: 950 }}
+        style={{ width: 900, height: 900 }}
       >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {info
-          ? info.map((item) => {
-              if ((item.latitude || item.longitude) !== undefined) {
-                return (
-                  <Marker
-                    key={item.id_stacji}
-                    position={[item.latitude, item.longitude]}
-                    icon={getIcon(item.temperatura)}
-                  >
-                    <Popup>
-                      {" "}
-                      {item.stacja}, temperatura: {item.temperatura}°C
-                    </Popup>
-                  </Marker>
-                );
-              }
-            })
-          : ""}
+        <LayersControl>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {info
+            ? info.map((item) => {
+                if ((item.latitude || item.longitude) !== undefined) {
+                  return (
+                    <Marker
+                      key={item.id_stacji}
+                      position={[item.latitude, item.longitude]}
+                      icon={getIcon(item.temperatura)}
+                    >
+                      <Popup>
+                        {item.stacja}, temperatura: {item.temperatura}°C
+                      </Popup>
+                    </Marker>
+                  );
+                }
+              })
+            : ""}
+        </LayersControl>
+        <LayersControl.Overlay>
+          <LayerGroup url="https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=3ff91bcbefd90c3a07f29ab94b9e6aa7" />
+        </LayersControl.Overlay>
       </MapContainer>
-    </>
+    </div>
   );
 }

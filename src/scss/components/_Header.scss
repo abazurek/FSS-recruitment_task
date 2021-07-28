@@ -1,0 +1,16 @@
+.header-wrapper{
+  padding: 10px 30px;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+  background: rgba(36, 123, 143, 1);
+
+  .title{
+    font-size: 0.8rem;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  .selects-wrapper{
+    display: flex;
+  }
+}
