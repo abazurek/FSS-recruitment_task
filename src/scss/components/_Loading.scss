@@ -1,0 +1,88 @@
+.wrapper{
+  position: absolute;
+  top:350px;
+  left: 350px;
+  z-index: 99999;
+}
+.loadingWrapper{
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.dotsWrapper{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  &._2{
+    transform: rotate(45deg) ;
+    animation: rotate 3s infinite;
+}
+  animation: rotateMain 3s infinite;
+
+}
+.dot{
+  position: absolute;
+  top:0;
+  left: 90px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+background: rgba(196, 95, 130, 1);
+  &._2{
+    top:90px;
+    left: 180px;
+  }
+  &._3{
+    top:180px;
+    left: 90px;
+  }
+  &._4{
+    top:90px;
+    left: 0;
+  }
+}
+
+
+.loading-textBox{
+  position: absolute;
+  top:92px;
+  left: 60px;
+  display: flex;
+}
+
+.loading-paragraph {
+  font-size: 16px;
+  text-align: center;
+  color: black;
+  font-family: $font-base;
+  font-weight: bolder;
+}
+@keyframes rotateMain {
+  50%{
+    transform: rotate(180deg);
+  }
+  50%{
+    transform: scale(0.7) rotate(180deg);
+  }
+  75%{
+    transform: scale(0.7) rotate(360deg);
+  }
+  100%{
+    transform: scale(1) rotate(360deg);
+  }
+}
+@keyframes rotate {
+  25%{
+    transform: rotate(225deg);
+  }
+  50%{
+    transform: scale(0.7) rotate(225deg);
+  }
+  75%{
+    transform: scale(0.7) rotate(405deg);
+  }
+  100%{
+    transform: scale(1) rotate(405deg);
+  }
+}

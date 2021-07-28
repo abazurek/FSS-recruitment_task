@@ -1,27 +1,21 @@
-.map {
-  font-family: $font-base;
-  font-size: 20px;
 
-  .leaflet-marker-icon {
-    background: transparent;
-    border: none;
-    .divIcon {
-      display: flex;
-      align-items: center;
-      font-family: $font-base;
-      font-size: 16px;
-      font-weight: 500;
-      svg {
-        width: 25px;
-        height: auto;
+
+  .map {
+    .leaflet-marker-icon {
+      background: transparent;
+      border: none;
+      .divIcon {
+        display: flex;
+        align-items: center;
+        font-family: $font-base;
+        font-size: 16px;
+        font-weight: 500;
+        svg {
+          width: 25px;
+          height: auto;
+        }
       }
     }
   }
-}
-.loading-paragraph {
-  font-size: 20px;
-  text-align: center;
-  color: black;
-  background: white;
-  height: 50px;
-}
+
+
