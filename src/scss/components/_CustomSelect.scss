@@ -9,6 +9,9 @@
     border-bottom: none;
     border-radius: 5px 5px 0 0;
   }
+  &._input{
+    width: 250px;
+  }
   .firstOption {
     padding: 0 5px;
     height: 30px;
@@ -18,6 +21,20 @@
     .option {
       font-size: 20px;
       font-weight: bolder;
+      &._input{
+        border: none;
+        outline: none;
+        width: 100%;
+        background: none;
+        color: $color-font-base;
+        font-family: $font-base;
+        font-size: 15px;
+        font-weight: normal;
+        &::placeholder{
+          font-size: 12px;
+          font-weight: lighter;
+        }
+      }
     }
     button {
       cursor: pointer;
@@ -31,7 +48,7 @@
     }
   }
   .optionsList {
-    display: none;
+    display: block;
     overflow-y: auto;
     position: absolute;
     top:30px;
@@ -43,17 +60,65 @@
     border: 1px solid rgba(27, 91, 106, 1);
     border-top: none;
     border-radius: 0 0 5px 5px;
-    &.showed {
-      display: block;
+    &.disabled {
+      display: none;
+    }
+    &.biggerVersion{
+      width: 250px;
     }
   }
+  ul{
+    backdrop-filter: brightness(0.95);
+  }
   li {
-    text-align: center;
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30px;
     &:hover{
       cursor: pointer;
     background: rgba(47, 162, 188, 0.81);
     }
+    &.dots{
+      pointer-events: none;
+      div{
+        transform: scale(0.7);
+        width: 6px;
+        height: 6px;
+        margin-right: 5px;
+        border-radius: 50%;
+        background: rgba(148, 148, 148, 1);
+        &:first-of-type{
+          animation: dotsAnimation 2s infinite 4.5s;
+        }
+        &:nth-child(2){
+          animation: dotsAnimation 2s infinite 0.5s;
+        }
+        &:last-child{
+          animation: dotsAnimation 2s infinite 2.5s;
+        }
+
+      }
+    }
+    &.noResults{
+      font-size: 15px;
+    }
+  }
+
+}
+.errorMessage{
+  padding: 5px 0;
+  font-size: 12px;
+  color: red;
+
+}
+
+@keyframes dotsAnimation {
+
+  50%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.7);
   }
 }
