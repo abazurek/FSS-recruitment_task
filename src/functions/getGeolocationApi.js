@@ -1,4 +1,4 @@
-import { weatherAPI } from "../temp/weatherApiLink";
+import { weatherAPI } from "../temp/fetchAddresses";
 
 function getGeolocationApi(city) {
   return `http://api.positionstack.com/v1/forward?access_key=4f2583fd551ab5f9d92ece8c1844737b&query=${city.stacja}`;
